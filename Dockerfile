@@ -14,5 +14,7 @@ VOLUME /home/ubuntu/kubernetes
 ENV JUJU_CI_ENV=aws-kubes-ci
  
 ADD kubes-ci-run.sh /kubes-ci-run.sh
+ENTRYPOINT
+CMD chown -R ubuntu:ubuntu /home/ubuntu/kubernetes
 CMD sudo -u ubuntu /bin/bash -c "/kubes-ci-run.sh"
 
