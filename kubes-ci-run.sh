@@ -8,6 +8,7 @@ export KUBERNETES_PROVIDER=juju
 
 git clone https://github.com/GoogleCloudPlatform/kubernetes.git $HOME/kubernetes
 sudo chown -R ubuntu:ubuntu $HOME/kubernetes
+sudo chown -R ubuntu:ubuntu $HOME/.juju
 cd $HOME/kubernetes
 
 /bin/bash -c 'ssh-keygen -t rsa -N "" -f ~/.ssh/id_rsa'
