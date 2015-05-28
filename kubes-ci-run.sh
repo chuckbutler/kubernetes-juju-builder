@@ -6,7 +6,8 @@ export HOME=/home/ubuntu
 export KUBERNETES_PROVIDER=juju
 . /home/ubuntu/.gvm/scripts/gvm
 
-chown -R ubuntu:ubuntu $HOME/kubernetes
+git clone https://github.com/GoogleCloudPlatform/kubernetes.git $HOME/kubernetes
+sudo chown -R ubuntu:ubuntu $HOME/kubernetes
 cd $HOME/kubernetes
 
 /bin/bash -c 'ssh-keygen -t rsa -N "" -f ~/.ssh/id_rsa'
