@@ -8,9 +8,15 @@ export KUBERNETES_PROVIDER=juju
 
 git clone https://github.com/GoogleCloudPlatform/kubernetes.git $HOME/kubernetes
 sudo chown -R ubuntu:ubuntu $HOME/kubernetes
+
+# Randomly, it seems, the .juju directory loses permissions
 sudo chown -R ubuntu:ubuntu $HOME/.juju
 
 juju switch $JUJU_CI_ENV
+
+# Forcibly destroy the environment, because things happen and stuff
+# gets inexplicably stuck when jobs go awry
+juju destroy-environment $JUJU_CI_ENV --force || true
 
 cd $HOME/kubernetes
 
@@ -21,7 +27,7 @@ make all WHAT=cmd/kubectl && \
 cluster/kube-up.sh \
 
 
-juju destroy-environment $JUJU_CI_ENV -y --force
+juju destroy-environment $JUJU_CI_ENV -y --force || true
 
 # Our credentials are ephemeral, so remove them
 rm -rf ~/.juju
