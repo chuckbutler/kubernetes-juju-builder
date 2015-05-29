@@ -7,7 +7,7 @@ export KUBERNETES_PROVIDER=juju
 . /home/ubuntu/.gvm/scripts/gvm
 
 git clone https://github.com/GoogleCloudPlatform/kubernetes.git $HOME/kubernetes
-sudo chown -R ubuntu:ubuntu $HOME/kubernetes
+sudo chown -R ubuntu:ubuntu $HOME/.ssh
 sudo chown -R ubuntu:ubuntu $HOME/.juju
 
 
