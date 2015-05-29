@@ -11,7 +11,7 @@ RUN /tmp/install-gvm.sh
 ENV JUJU_CI_ENV=aws-kubes-ci
 ADD kubes-ci-run.sh /kubes-ci-run.sh
 ENTRYPOINT
-ADD environments.yaml /home/ubuntu/.juju/environments.yaml
+
 RUN chown -R ubuntu:ubuntu /home/ubuntu/.juju
 CMD sudo -u ubuntu /bin/bash -c "/kubes-ci-run.sh"
 
