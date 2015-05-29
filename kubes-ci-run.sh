@@ -22,10 +22,12 @@ cd $HOME/kubernetes
 
 /bin/bash -c 'ssh-keygen -t rsa -N "" -f ~/.ssh/id_rsa'
 
+# Allow failure so we always reach cleanup
+set +e
+
 gvm use  go1.4 && \
 make all WHAT=cmd/kubectl && \
 cluster/kube-up.sh \
-
 
 juju destroy-environment $JUJU_CI_ENV -y --force || true
 
