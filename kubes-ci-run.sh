@@ -10,7 +10,8 @@ git clone https://github.com/GoogleCloudPlatform/kubernetes.git $HOME/kubernetes
 sudo chown -R ubuntu:ubuntu $HOME/kubernetes
 
 if [ -f '/tmp/juju-credentials.tar.gz' ]; then
-    cp /tmp/juju-credentials.tar.gz .
+    sudo cp /tmp/juju-credentials.tar.gz .
+    sudo chown ubuntu:ubuntu juju-credentials.tar.gz
     mkdir -p .juju
     tar xvfz juju-credentials.tar --strip-components=1 -C .juju
 
