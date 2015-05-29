@@ -9,8 +9,20 @@ export KUBERNETES_PROVIDER=juju
 git clone https://github.com/GoogleCloudPlatform/kubernetes.git $HOME/kubernetes
 sudo chown -R ubuntu:ubuntu $HOME/kubernetes
 
-# Randomly, it seems, the .juju directory loses permissions
-sudo chown -R ubuntu:ubuntu $HOME/.juju
+if [ -f '/tmp/juju-credentials.tar.gz' ]; then
+    cp /tmp/juju-credentials.tar .
+    mkdir -p .juju
+    tar xvfz juju-credentials.tar --strip-components=1 -C .juju
+
+    # Randomly, it seems, the .juju directory loses permissions
+    sudo chown -R ubuntu:ubuntu $HOME/.juju
+fi
+
+
+if [ ! -f '/home/ubuntu/juju/environments.yaml' ]; then
+    echo "No environment configuration found, exiting"
+    exit 1
+fi
 
 juju switch $JUJU_CI_ENV
 
@@ -19,8 +31,6 @@ juju switch $JUJU_CI_ENV
 juju destroy-environment $JUJU_CI_ENV --force || true
 
 cd $HOME/kubernetes
-
-/bin/bash -c 'ssh-keygen -t rsa -N "" -f ~/.ssh/id_rsa'
 
 # Allow failure so we always reach cleanup
 set +e
