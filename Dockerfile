@@ -2,7 +2,7 @@ FROM jujusolutions/charmbox
 
 MAINTAINER Charles Butler <charles.butler@canonical.com>
 
-ENV JUJU_CI_ENV=aws-kubes-ci
+ENV JUJU_CI_ENV=aws
 
 RUN apt-get update
 RUN apt-get install -y curl git mercurial make binutils bison gcc build-essential juju juju-quickstart juju-local
