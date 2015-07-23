@@ -23,6 +23,7 @@ cd kubernetes
 gvm use  go1.4 && \
 make all WHAT=cmd/kubectl && \
 set +e
+juju bootstrap
 cluster/kube-up.sh
 # Cache the return code of the build, and ultimately return that
 BUILDRUN=$?
@@ -31,12 +32,7 @@ echo "Please implement further validation here - deploy a workload, benchmark, s
 
 cluster/kube-down.sh
 echo "Forcing destroy of env - just to be safe"
-JENV=$(juju env)
-if [ ! -z $JENV ]; then
-    juju destroy-environment $JENV -y --force
-else
-    juju destroy-environment $CIENV -y --force
-fi
+juju destroy-environment $CIENV -y --force
 
 echo "Test run complete"
 
