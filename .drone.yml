@@ -1,10 +1,11 @@
 image: jujusolutions/charmbox
 env:
     - JUJU_REPOSITORY='/var/cache/drone/src/github.com/chuckbutler/'
+git:
+    path: github.com/chuckbutler/kubes-juju-builder
 script:
     - sudo apt-get update
     - juju init
     - echo $JUJUENV | base64 --decode > ~/.juju/environments.yaml
-    - echo $CIENV
-    - juju switch $CIENV
+    - juju switch kubes-ci-hp
     - ./kubes-ci-run.sh
