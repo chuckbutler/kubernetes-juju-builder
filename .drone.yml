@@ -7,6 +7,7 @@ script:
     - sudo apt-get update
     - juju init
     - echo $ENVYAML | base64 --decode > ~/.juju/environments.yaml
+    - juju destroy-environment $$CIENV --force -y
     - juju switch $$CIENV
     - juju bootstrap
     - echo $$CIENV > ~/.juju/current-environment
