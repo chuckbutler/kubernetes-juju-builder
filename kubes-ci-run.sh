@@ -1,7 +1,7 @@
 #!/bin/bash
 
 set -ex
-apt-get install -y curl git mercurial make binutils bison gcc build-essential juju juju-quickstart juju-local
+apt-get install -y curl git mercurial make binutils bison gcc build-essential
 
 # Fetch GVM
 curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer -o /tmp/gvm-installer
