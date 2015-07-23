@@ -1,0 +1,3 @@
+image: jujusolutions/charmbox
+script:
+    - ./kubes-ci-run.sh
