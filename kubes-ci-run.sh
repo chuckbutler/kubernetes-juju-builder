@@ -1,15 +1,28 @@
 #!/bin/bash
 
 set -ex
+apt-get update
+apt-get install -y curl git mercurial make binutils bison gcc build-essential juju juju-quickstart juju-local
+
+# Fetch GVM
+curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer -o /tmp/gvm-installer
+chmod +x /tmp/gvm-installer
+
+export HOME=/home/ubuntu
+
+# Run command as Ubuntu User
+sudo -u ubuntu /tmp/gvm-installer
+sudo -u ubuntu /bin/bash -c "source /home/ubuntu/.gvm/scripts/gvm && gvm install go1.4"
 
 export HOME=/home/ubuntu
 export KUBERNETES_PROVIDER=juju
 . /home/ubuntu/.gvm/scripts/gvm
 
+
 git clone https://github.com/GoogleCloudPlatform/kubernetes.git $HOME/kubernetes
 sudo chown -R ubuntu:ubuntu $HOME/.ssh
 sudo chown -R ubuntu:ubuntu $HOME/.juju
-
+juju switch $JUJU_CI_ENV
 
 cd $HOME/kubernetes
 
