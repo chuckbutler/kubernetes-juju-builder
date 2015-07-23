@@ -10,10 +10,10 @@ chmod +x /tmp/gvm-installer
 
 # Run command as Ubuntu User
 /tmp/gvm-installer
-/bin/bash -c "source /home/ubuntu/.gvm/scripts/gvm && gvm install go1.4"
+. $HOME/.gvm/scripts/gvm
+gvm install go1.4
 
 export KUBERNETES_PROVIDER=juju
-. $HOME/.gvm/scripts/gvm
 
 
 git clone https://github.com/GoogleCloudPlatform/kubernetes.git kubernetes
