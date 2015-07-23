@@ -7,15 +7,13 @@ apt-get install -y curl git mercurial make binutils bison gcc build-essential
 curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer -o /tmp/gvm-installer
 chmod +x /tmp/gvm-installer
 
-export HOME=/home/ubuntu
 
 # Run command as Ubuntu User
-sudo -u ubuntu /tmp/gvm-installer
-sudo -u ubuntu /bin/bash -c "source /home/ubuntu/.gvm/scripts/gvm && gvm install go1.4"
+/tmp/gvm-installer
+/bin/bash -c "source /home/ubuntu/.gvm/scripts/gvm && gvm install go1.4"
 
-export HOME=/home/ubuntu
 export KUBERNETES_PROVIDER=juju
-. /home/ubuntu/.gvm/scripts/gvm
+. $HOME/.gvm/scripts/gvm
 
 
 git clone https://github.com/GoogleCloudPlatform/kubernetes.git kubernetes
