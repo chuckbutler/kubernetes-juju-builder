@@ -7,6 +7,7 @@ script:
     - sudo apt-get update
     - juju init
     - echo $ENVYAML | base64 --decode > ~/.juju/environments.yaml
+    - echo $AZUREKEY | base64 --decode > ~/.juju/azure.pem
     - juju switch $$CIENV
     - echo $$CIENV > ~/.juju/current-environment
     - ./kubes-ci-run.sh
