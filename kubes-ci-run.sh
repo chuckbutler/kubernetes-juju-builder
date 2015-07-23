@@ -34,7 +34,11 @@ echo "Please implement further validation here - deploy a workload, benchmark, s
 cluster/kube-down.sh
 echo "Forcing destroy of env - just to be safe"
 JENV=$(juju env)
-juju destroy-environment $JENV -y --force
+if [ ! -z $JENV ]; then
+    juju destroy-environment $JENV -y --force
+else
+    juju destroy-environment $CIENV -y --force
+fi
 
 echo "Test run complete"
 

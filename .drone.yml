@@ -9,4 +9,5 @@ script:
     - echo $ENVYAML | base64 --decode > ~/.juju/environments.yaml
     - juju switch $$CIENV
     - juju bootstrap
+    - echo $$CIENV > ~/.juju/current-environment
     - ./kubes-ci-run.sh
