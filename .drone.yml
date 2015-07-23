@@ -6,6 +6,6 @@ git:
 script:
     - sudo apt-get update
     - juju init
-    - echo $$JUJUENV | base64 --decode > ~/.juju/environments.yaml
+    - echo $ENVYAML | base64 --decode > ~/.juju/environments.yaml
     - juju $$CIENV
     - ./kubes-ci-run.sh
