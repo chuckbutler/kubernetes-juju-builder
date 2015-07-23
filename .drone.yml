@@ -10,3 +10,11 @@ script:
     - juju switch $$CIENV
     - echo $$CIENV > ~/.juju/current-environment
     - ./kubes-ci-run.sh
+notify:
+  slack:
+    webhook_url: $SLACKHOOK
+    username: 'drone'
+    channel: '#dev'
+    on_started: false
+    on_success: true
+    on_failure: true
