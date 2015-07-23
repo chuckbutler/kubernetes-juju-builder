@@ -8,6 +8,7 @@ script:
     - juju init
     - echo $ENVYAML | base64 --decode > ~/.juju/environments.yaml
     - echo $AZUREKEY | base64 --decode > ~/.juju/azure.pem
+    - echo $GOOGLEAUTH | base64 --decode > ~/.juju/gce.json
     - juju switch $$CIENV
     - echo $$CIENV > ~/.juju/current-environment
     - ./kubes-ci-run.sh
