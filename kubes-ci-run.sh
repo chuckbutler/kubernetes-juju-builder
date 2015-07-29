@@ -21,8 +21,7 @@ git clone https://github.com/GoogleCloudPlatform/kubernetes.git kubernetes
 cd kubernetes
 
 # Revert the SwaggerUI commit
-git revert dba914268c23b315cffd42bed00c5d9b6d769287 --no-edit
-git commit -am "Cleaning up swagger UI update-revert"
+git revert dba914268c23b315cffd42bed00c5d9b6d769287 --no-edit -m "remove swaggerui bump"
 
 gvm use  go1.4 && \
 make all WHAT=cmd/kubectl && \
