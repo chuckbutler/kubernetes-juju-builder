@@ -27,3 +27,4 @@ are merged in
 I'm currently a one-man-show on the validations of the kubernetes standup
 with this script. If anything is broken please file a bug on the [issue tracker](https://github.com/chuckbutler/kubernetes-juju-builder/issues)
 of this project.
+
