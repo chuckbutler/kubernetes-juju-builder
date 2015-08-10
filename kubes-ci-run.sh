@@ -24,6 +24,7 @@ gvm use  go1.4 && \
 make all WHAT=cmd/kubectl && \
 set +e
 juju bootstrap
+juju-quickstart --debug
 cluster/kube-up.sh
 # Cache the return code of the build, and ultimately return that
 BUILDRUN=$?
